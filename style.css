@@ -43,10 +43,16 @@ The designs were created to the following widths:
 
 /* ========================== */
 
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
 }
 
 :root {
@@ -103,14 +109,12 @@ The designs were created to the following widths:
 }
 
 .second-half {
-    /* min-height: 100vh; */
-    position: relative;
-    background-color: red;
-    padding-top: 80vh;
+  position: relative;
+  background-color: var(--Magnolia);
+  padding-top: 75vh;
 }
 
 .form {
-    /* background-color: var(--Magnolia); */
   background-color: var(--white);
   width: 90%;
   margin: 0 auto;
@@ -126,6 +130,14 @@ The designs were created to the following widths:
   padding: 10px 0;
 }
 
-.form button {
-    po
+form button {
+  position: absolute;
+  bottom: -73px;
+  right: 10px;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: large;
+  border: none;
+  background-color: var(--marine-blue);
+  color: var(--white);
 }
