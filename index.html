@@ -22,7 +22,7 @@
       <div class="second-half">
         <form>
           <div class="form">
-            <div class="each-step step-1">
+            <div class="each-step step-1 active">
               <h1>Personal Info</h1>
               <p>
                 Personal Provide your name, email, address, and phone number
@@ -44,8 +44,38 @@
                 <input type="tel" id="phone" placeholder="e.g.+123457890" />
               </div>
             </div>
+            <!-- ============= Step2 ==============  -->
+            <div class="each-step step-2">
+              <h1>Select Your Plan</h1>
+              <p>You have the option of monthly or yearly billing</p>
+              <div class="plans">
+                <div>
+                  <img src="./assets/images/icon-arcade.svg" alt="" />
+                  <h3>Arcade</h3>
+                  <p>$9/mo</p>
+                </div>
+                <div>
+                  <img src="./assets/images/icon-advanced.svg" alt="" />
+                  <h3>Advanced</h3>
+                  <p>$12/mo</p>
+                </div>
+                <div>
+                  <img src="./assets/images/icon-pro.svg" alt="" />
+                  <h3>Pro</h3>
+                  <p>$15/mo</p>
+                </div>
+              </div>
+              <div class="plans_toggle">
+                <p>Monthly</p>
+                <div><small></small></div>
+                <p>Yearly</p>
+              </div>
+            </div>
           </div>
-          <button>Next Step</button>
+          <div class="nav_links">
+            <p>Go Back</p>
+            <button>Next Step</button>
+          </div>
         </form>
       </div>
     </main>

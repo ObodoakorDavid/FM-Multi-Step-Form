@@ -53,6 +53,7 @@ The designs were created to the following widths:
 
 body {
   font-family: "Ubuntu", sans-serif;
+  transition: 0.4s ease-in-out;
 }
 
 :root {
@@ -131,9 +132,6 @@ body {
 }
 
 form button {
-  position: absolute;
-  bottom: -73px;
-  right: 10px;
   padding: 16px 32px;
   border-radius: 8px;
   font-size: large;
@@ -141,3 +139,25 @@ form button {
   background-color: var(--marine-blue);
   color: var(--white);
 }
+
+.nav_links {
+  background-color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 18px;
+}
+
+.nav_links p {
+  visibility: hidden;
+}
+
+.each-step {
+  display: none;
+}
+
+.each-step.active {
+  display: block;
+}
+
+/* =================== Second Step ============  */
