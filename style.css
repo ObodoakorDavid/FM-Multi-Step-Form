@@ -1,0 +1,131 @@
+/**
+*
+* @format
+*/
+
+/* # Front-end Style Guide
+
+## Layout
+
+The designs were created to the following widths:
+
+- Mobile: 375px
+- Desktop: 1440px
+
+## Colors
+
+### Primary
+
+- Marine blue: hsl(213, 96%, 18%)
+- Purplish blue: hsl(243, 100%, 62%)
+- Pastel blue: hsl(228, 100%, 84%)
+- Light blue: hsl(206, 94%, 87%)
+- Strawberry red: hsl(354, 84%, 57%)
+
+### Neutral
+
+- Cool gray: hsl(231, 11%, 63%)
+- Light gray: hsl(229, 24%, 87%)
+- Magnolia: hsl(217, 100%, 97%)
+- Alabaster: hsl(231, 100%, 99%)
+- White: hsl(0, 0%, 100%)
+
+## Typography
+
+### Body Copy
+
+- Font size (paragraph): 16px
+
+### Font
+
+- Family: [Ubuntu](https://fonts.google.com/specimen/Ubuntu)
+- Weights: 400, 500, 700 */
+
+/* ========================== */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --marine-blue: hsl(213, 96%, 18%);
+  --purplish-lue: hsl(243, 100%, 62%);
+  --pastel-blue: hsl(228, 100%, 84%);
+  --light-blue: hsl(206, 94%, 87%);
+  --strawberry-red: hsl(354, 84%, 57%);
+
+  /* =============================== */
+
+  --cool-gray: hsl(231, 11%, 63%);
+  --light-gray: hsl(229, 24%, 87%);
+  --Magnolia: hsl(217, 100%, 97%);
+  --Alabaster: hsl(231, 100%, 99%);
+  --white: hsl(0, 0%, 100%);
+}
+
+.container {
+  width: 100%;
+}
+
+.first-half {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 80px;
+  background-image: url("./assets/images/bg-sidebar-mobile.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.progress {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.progress small {
+  padding: 5px 10px;
+  background-color: transparent;
+  border-radius: 90px;
+  border: 2px solid var(--pastel-blue);
+  color: var(--pastel-blue);
+  font-weight: bolder;
+}
+
+.progress small.active {
+  background-color: var(--pastel-blue);
+  color: var(--marine-blue);
+}
+
+.progress small:hover {
+  cursor: pointer;
+}
+
+.second-half {
+    /* min-height: 100vh; */
+    position: relative;
+    background-color: red;
+    padding-top: 80vh;
+}
+
+.form {
+    /* background-color: var(--Magnolia); */
+  background-color: var(--white);
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px 10px;
+  border-radius: 8px;
+  position: absolute;
+  top: -40px;
+  left: 5%;
+}
+
+.form h1 {
+  color: var(--marine-blue);
+  padding: 10px 0;
+}
+
+.form button {
+    po
+}
