@@ -6,7 +6,7 @@ import FormContext from "../context/FormContext";
 const Progress = () => {
   const { pageIndex } = useContext(FormContext);
   return (
-    <div className="progress">
+    <div className="progress-numbers container-fluid">
       <small className="active">1</small>
       <small className={pageIndex >= 2 ? "active" : ""}>2</small>
       <small className={pageIndex >= 3 ? "active" : ""}>3</small>

@@ -10,13 +10,13 @@ import ThirdPage from "./ThirdPage";
 const CurrentPage = () => {
   const { pageIndex, pageDetails } = useContext(FormContext);
 
-  if (pageIndex === 1) {
+  if (pageIndex === 0) {
     return <FirstPage />;
-  } else if (pageIndex === 2) {
+  } else if (pageIndex === 1) {
     return <SecondPage />;
-  } else if (pageIndex === 3) {
+  } else if (pageIndex === 2) {
     return <ThirdPage />;
-  } else if (pageIndex === 4) {
+  } else if (pageIndex === 3) {
     return <FourthPage />;
   }
 };

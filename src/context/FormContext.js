@@ -7,7 +7,7 @@ const FormContext = createContext();
 export default FormContext;
 
 export const FormProvider = ({ children }) => {
-  const [pageIndex, setPageIndex] = useState(1);
+  const [pageIndex, setPageIndex] = useState(0);
   let pageDetails = [
     {
       title: "Personal Info",
@@ -42,7 +42,7 @@ export const FormProvider = ({ children }) => {
   };
 
   const goBack = () => {
-    if (pageIndex == 1) {
+    if (pageIndex == 0) {
       return;
     }
 
