@@ -1,13 +1,70 @@
 /** @format */
 
 import { createContext, useState } from "react";
+import arcadeIMG from "../assets/images/icon-arcade.svg";
+import AdvancedIMG from "../assets/images/icon-advanced.svg";
+import ProIMG from "../assets/images/icon-pro.svg";
 
 const FormContext = createContext();
 
 export default FormContext;
 
 export const FormProvider = ({ children }) => {
-  const [pageIndex, setPageIndex] = useState(0);
+  const [pageIndex, setPageIndex] = useState(2);
+  const [data, setData] = useState([
+    {
+      id: 1,
+      img: arcadeIMG,
+      heading: "Arcade",
+      paragraph: "$9/mo",
+      active: false,
+      plan: "monthly",
+    },
+    {
+      id: 2,
+      img: AdvancedIMG,
+      heading: "Advanced",
+      paragraph: "$12/mo",
+      active: false,
+      plan: "monthly",
+    },
+    {
+      id: 3,
+      img: ProIMG,
+      heading: "Pro",
+      paragraph: "$15/mo",
+      active: false,
+      plan: "monthly",
+    },
+  ]);
+
+  const [thirdPageData, setThirdPageData] = useState([
+    {
+      id: 1,
+      heading: "Online service",
+      paragraph: "Access to multiplayer games",
+      active: false,
+      plan: "monthly",
+      price: "+$1/mo",
+    },
+    {
+      id: 2,
+      heading: "Larger storage",
+      paragraph: "Extra 1TB of cloud save",
+      active: false,
+      plan: "monthly",
+      price: "+$2/mo",
+    },
+    {
+      id: 3,
+      heading: "Pro",
+      paragraph: "$15/mo",
+      active: false,
+      plan: "monthly",
+      price: "+$2/mo",
+    },
+  ]);
+
   let pageDetails = [
     {
       title: "Personal Info",
@@ -32,6 +89,8 @@ export const FormProvider = ({ children }) => {
     },
   ];
 
+  // ============== OverAll ==========
+
   const nextStep = () => {
     if (pageIndex == 4) {
       return;
@@ -48,12 +107,30 @@ export const FormProvider = ({ children }) => {
 
     setPageIndex(pageIndex - 1);
   };
+
+  // ============== SecondPage ==========
+
+  const handleSelectPlan = (e, datum) => {
+    console.log(e.target.classList);
+    let updatedData = data.map((each) =>
+      each.id === datum.id
+        ? { ...each, active: true }
+        : { ...each, active: false }
+    );
+    console.log(updatedData);
+    setData(updatedData);
+  };
+
   let FormData = {
     pageIndex,
     setPageIndex,
     pageDetails,
     nextStep,
     goBack,
+    data,
+    setData,
+    handleSelectPlan,
+    thirdPageData,
   };
   return (
     <FormContext.Provider value={FormData}>{children}</FormContext.Provider>

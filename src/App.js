@@ -5,7 +5,7 @@ import "./App.css";
 import { FormProvider } from "./context/FormContext";
 import Layout from "./utils/Layout";
 import Form from "./components/Form";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
