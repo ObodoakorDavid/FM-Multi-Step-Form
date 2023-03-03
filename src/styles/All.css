@@ -73,6 +73,7 @@ body {
 }
 
 /* ============== General Styling =============  */
+
 .border-blue {
   border: 2px solid var(--light-gray);
 }
@@ -81,16 +82,22 @@ body {
   border: 2px solid var(--marine-blue);
 }
 
-/* ===============================  */
+/* ============= Progress  ==================  */
 
 .top-half {
-  background-image: url("../assets//images/bg-sidebar-mobile.svg");
+  background-image: url("../assets/images/bg-sidebar-mobile.svg");
   background-repeat: no-repeat;
   background-size: cover;
   padding: 30px 0;
-  padding-bottom: 60px;
+  padding-bottom: 100px;
 }
 
+@media (min-width: 768px) {
+  .top-half {
+    border-radius: 8px;
+    background-image: url("../assets/images/bg-sidebar-desktop.svg");
+  }
+}
 .progress-numbers {
   display: flex;
   justify-content: center;
@@ -115,22 +122,32 @@ body {
   cursor: pointer;
 }
 
+/* ========= Form ===========  */
+
 main {
-  position: relative;
+  /* position: unset; */
 }
 
 .form {
   position: absolute;
-  top: -30px;
+  top: 90px;
   right: 0;
   left: 0;
-  max-width: 400px;
+  width: 90%;
+  max-width: 550px;
   margin: 0 auto;
   background-color: var(--white);
-  width: 90%;
-  margin: 0 auto;
   border-radius: 8px;
   text-align: left;
+}
+
+@media (min-width: 768px) {
+  .form {
+    position: relative;
+    top: 0;
+    max-width: unset;
+    height: 100%;
+  }
 }
 
 .form h1 {
@@ -154,35 +171,50 @@ main {
   min-height: 100vh;
 }
 
+.inner-layout {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: white;
+}
+
+@media (min-width: 768px) {
+  .inner-layout {
+    height: 600px;
+  }
+}
+
+@media (min-width: 768px) {
+  .inner-layout {
+    max-width: 1000px;
+  }
+}
+
 .back-next {
-  position: absolute;
-  bottom: -100px;
-  right: 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .back-next {
+    position: absolute;
+    bottom: 0;
+  }
 }
 
 /* ===================== first-page ================  */
 
-.first-page label {
-  font-weight: 400;
-  font-size: 13px;
-}
 .first-page input {
-  width: 100%;
-  padding: 6px 10px;
-  border-radius: 4px;
   border: 1.5px solid var(--Magnolia);
-}
-
-.first-page {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  /* border: 1.5px solid red; */
 }
 
 /* ===================== second-page ================  */
 
 .second-page .top-section > div {
-  border: 2px solid var(--light-gray);
+  border: 1px solid var(--light-gray);
   border-radius: 8px;
 }
 

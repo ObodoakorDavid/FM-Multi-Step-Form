@@ -12,11 +12,9 @@ const SecondPage = () => {
         {data.map((datum) => {
           return (
             <div
-              className={
-                datum.active === true
-                  ? " active d-flex gap-3 align-items-center p-3 text-start"
-                  : "d-flex gap-3 align-items-center p-3 text-start"
-              }
+              className={`d-flex gap-3 align-items-center p-3 p-md-2 text-start ${
+                datum.active === true ? " active" : ""
+              }`}
               onClick={(e) => {
                 handleSelectPlan(e, datum);
               }}
@@ -28,7 +26,9 @@ const SecondPage = () => {
                 <p className="m-0">{datum.paragraph}</p>
                 <small
                   className={
-                    datum.plan == "monthly" ? "m-0 fw-semibold" : "d-none"
+                    datum.plan == "monthly"
+                      ? "m-0 fw-semibold d-none"
+                      : "d-none"
                   }
                 >
                   2 months fee
@@ -38,7 +38,7 @@ const SecondPage = () => {
           );
         })}
       </div>
-      <div className="bottom-section mt-4 rounded d-flex justify-content-between p-3 align-items-center">
+      <div className="bottom-section mt-4 mt-sm-3 rounded d-flex justify-content-between p-3 align-items-center">
         <p className="m-0">Monthly</p>
         <div className="">toggle</div>
         <p className="m-0">Yearly</p>

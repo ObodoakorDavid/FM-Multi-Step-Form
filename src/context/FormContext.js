@@ -10,7 +10,7 @@ const FormContext = createContext();
 export default FormContext;
 
 export const FormProvider = ({ children }) => {
-  const [pageIndex, setPageIndex] = useState(2);
+  const [pageIndex, setPageIndex] = useState(0);
   const [data, setData] = useState([
     {
       id: 1,
@@ -121,6 +121,17 @@ export const FormProvider = ({ children }) => {
     setData(updatedData);
   };
 
+  const handleAddOns = (checked, datum) => {
+    const updatedData = thirdPageData.map((each) => {
+      if (datum.id === each.id) {
+        return { ...each, active: checked };
+      } else {
+        return each;
+      }
+    });
+    setThirdPageData(updatedData);
+  };
+
   let FormData = {
     pageIndex,
     setPageIndex,
@@ -131,6 +142,7 @@ export const FormProvider = ({ children }) => {
     setData,
     handleSelectPlan,
     thirdPageData,
+    handleAddOns
   };
   return (
     <FormContext.Provider value={FormData}>{children}</FormContext.Provider>
