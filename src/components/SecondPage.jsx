@@ -12,7 +12,7 @@ const SecondPage = () => {
         {data.map((datum) => {
           return (
             <div
-              className={`d-flex gap-3 align-items-center p-3 p-md-2 text-start ${
+              className={`d-flex gap-3 align-items-center p-3 p-md-2 text-start border-gray  ${
                 datum.active === true ? " active" : ""
               }`}
               onClick={(e) => {
@@ -23,7 +23,9 @@ const SecondPage = () => {
               <img src={datum.img} alt="" />
               <div>
                 <small className="m-0 fw-bold">{datum.heading}</small>
-                <p className="m-0">{datum.paragraph}</p>
+                <p className="m-0 text-cool-gray fw-semibold">
+                  {datum.paragraph}
+                </p>
                 <small
                   className={
                     datum.plan == "monthly"
@@ -38,7 +40,7 @@ const SecondPage = () => {
           );
         })}
       </div>
-      <div className="bottom-section mt-4 mt-sm-3 rounded d-flex justify-content-between p-3 align-items-center">
+      <div className="bottom-section mt-4 mt-sm-3 rounded d-flex justify-content-between p-3 align-items-center bg-magnolia">
         <p className="m-0">Monthly</p>
         <div className="">toggle</div>
         <p className="m-0">Yearly</p>

@@ -11,7 +11,7 @@ const ThirdPage = () => {
       {thirdPageData.map((datum) => {
         return (
           <div
-            className={`d-flex gap-3 align-items-center border-blue rounded p-3 ${
+            className={`d-flex gap-3 align-items-center border-gray rounded p-3 ${
               datum.active === true ? "active" : ""
             }`}
             key={datum.id}
@@ -26,7 +26,7 @@ const ThirdPage = () => {
               checked={datum.active}
             />
             <div className=" flex-grow-1">
-              <h4 className="m-0 fw-bold">{datum.heading}</h4>
+              <h4 className="m-0 fw-bold fs-5">{datum.heading}</h4>
               <p className="m-0 fw-semibold">{datum.paragraph}</p>
             </div>
             <p className=" fw-semibold">{datum.price}</p>

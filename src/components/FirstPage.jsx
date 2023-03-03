@@ -10,7 +10,7 @@ const FirstPage = () => {
           Name
         </label>
         <input
-          className=" w-100 p-2 ps-3 rounded"
+          className=" w-100 p-2 ps-3 rounded border-gray"
           type="text"
           placeholder="e.g.Stephen King"
         />
@@ -20,7 +20,7 @@ const FirstPage = () => {
           Email Address
         </label>
         <input
-          className=" w-100 p-2 ps-3 rounded"
+          className=" w-100 p-2 ps-3 rounded border-gray"
           type="email"
           placeholder="e.g.Stephen King"
         />
@@ -30,7 +30,7 @@ const FirstPage = () => {
           Phone Number
         </label>
         <input
-          className=" w-100 p-2 ps-3 rounded"
+          className=" w-100 p-2 ps-3 rounded border-gray"
           type="text"
           placeholder="e.g.Stephen King"
         />

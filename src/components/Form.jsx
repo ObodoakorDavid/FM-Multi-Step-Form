@@ -17,12 +17,12 @@ const Form = () => {
       <h1>{pageDetails[pageIndex].title}</h1>
       <p>{pageDetails[pageIndex].detail}</p>
       <CurrentPage />
-      <div className="back-next d-flex justify-content-between align-items-baseline w-100 p-4 p-md-0 pt-md-5 ps-md-4 pe-md-4">
+      <div className="back-next bg-white d-flex justify-content-between align-items-baseline w-100 p-3 p-md-0 pt-md-5 ps-md-4 pe-md-4">
         <p
           onClick={() => {
             goBack();
           }}
-          className=""
+          className="m-0"
         >
           Go Back
         </p>
