@@ -11,6 +11,17 @@ export default FormContext;
 
 export const FormProvider = ({ children }) => {
   const [pageIndex, setPageIndex] = useState(0);
+  const [userDetails, setUserDetails] = useState({
+    name: "",
+    email: "",
+    number: "",
+  });
+  const [errorMessage, setErrorMessage] = useState({
+    name: "This field is required",
+    email: "This field is required",
+    number: "This field is required",
+  });
+
   const [data, setData] = useState([
     {
       id: 1,
@@ -107,6 +118,7 @@ export const FormProvider = ({ children }) => {
 
     setPageIndex(pageIndex - 1);
   };
+  // ============== FristPage ==========
 
   // ============== SecondPage ==========
 
@@ -142,7 +154,11 @@ export const FormProvider = ({ children }) => {
     setData,
     handleSelectPlan,
     thirdPageData,
-    handleAddOns
+    handleAddOns,
+    userDetails,
+    setUserDetails,
+    errorMessage,
+    setErrorMessage,
   };
   return (
     <FormContext.Provider value={FormData}>{children}</FormContext.Provider>
