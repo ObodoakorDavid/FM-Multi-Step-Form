@@ -100,45 +100,30 @@ export const FormProvider = ({ children }) => {
     },
   ];
 
-  // ============== OverAll ==========
-
-  const nextStep = () => {
-    if (pageIndex == 4) {
-      return;
-    }
-
-    if (userDetails.name === "") {
-      setErrorMessage({ ...errorMessage, name: "This field is required" });
-      console.log('hh');
-      return;
-    } else {
-      setErrorMessage({ ...errorMessage, name: "" });
-    }
-    if (userDetails.email === "") {
-      setErrorMessage({ ...errorMessage, email: "This field is required" });
-      return;
-    } else {
-      setErrorMessage({ ...errorMessage, email: "" });
-    }
-    if (userDetails.number === "") {
-      setErrorMessage({ ...errorMessage, number: "This field is required" });
-      return;
-    } else {
-      setErrorMessage({ ...errorMessage, number: "" });
-    }
-
-    setPageIndex(pageIndex + 1);
-    console.log(pageIndex);
-  };
-
-  const goBack = () => {
-    if (pageIndex == 0) {
-      return;
-    }
-
-    setPageIndex(pageIndex - 1);
-  };
   // ============== FristPage ==========
+
+  const handleFirstPage = () => {
+    let temp = {
+      name: "",
+      email: "",
+      number: "",
+    };
+    if (userDetails.name == "") {
+      temp = { ...temp, name: "This field is required" };
+    }
+    if (userDetails.email == "") {
+      temp = { ...temp, email: "This field is required" };
+    }
+    if (userDetails.number == "") {
+      temp = { ...temp, number: "This field is required" };
+    }
+    setErrorMessage(temp);
+    if (userDetails.name && userDetails.email && userDetails.number) {
+      return "complete";
+    } else {
+      return;
+    }
+  };
 
   // ============== SecondPage ==========
 
@@ -162,6 +147,31 @@ export const FormProvider = ({ children }) => {
       }
     });
     setThirdPageData(updatedData);
+  };
+
+  const handleSecondPage = ()=>{
+    
+  }
+
+  // ============== OverAll ==========
+
+  const nextStep = () => {
+    if (pageIndex == 4) {
+      return;
+    }
+
+    // if (handleFirstPage() == "complete") {
+    //   setPageIndex((prev) => prev + 1);
+    // }
+    setPageIndex((prev) => prev + 1);
+  };
+
+  const goBack = () => {
+    if (pageIndex == 0) {
+      return;
+    }
+
+    setPageIndex(pageIndex - 1);
   };
 
   let FormData = {
