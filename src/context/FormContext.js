@@ -17,9 +17,9 @@ export const FormProvider = ({ children }) => {
     number: "",
   });
   const [errorMessage, setErrorMessage] = useState({
-    name: "This field is required",
-    email: "This field is required",
-    number: "This field is required",
+    name: "",
+    email: "",
+    number: "",
   });
 
   const [data, setData] = useState([
@@ -105,6 +105,26 @@ export const FormProvider = ({ children }) => {
   const nextStep = () => {
     if (pageIndex == 4) {
       return;
+    }
+
+    if (userDetails.name === "") {
+      setErrorMessage({ ...errorMessage, name: "This field is required" });
+      console.log('hh');
+      return;
+    } else {
+      setErrorMessage({ ...errorMessage, name: "" });
+    }
+    if (userDetails.email === "") {
+      setErrorMessage({ ...errorMessage, email: "This field is required" });
+      return;
+    } else {
+      setErrorMessage({ ...errorMessage, email: "" });
+    }
+    if (userDetails.number === "") {
+      setErrorMessage({ ...errorMessage, number: "This field is required" });
+      return;
+    } else {
+      setErrorMessage({ ...errorMessage, number: "" });
     }
 
     setPageIndex(pageIndex + 1);

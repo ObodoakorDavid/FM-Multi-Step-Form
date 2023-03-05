@@ -14,38 +14,64 @@ const FirstPage = () => {
           <label className=" fw-semibold" htmlFor="name">
             Name
           </label>
-          <small
-            className={`text-red fw-semibold ${
-              errorMessage.name === "" ? "d-block" : "d-none"
-            }`}
-          >
-            {errorMessage.name}
-          </small>
+          <small className="text-red fw-semibold">{errorMessage.name}</small>
         </div>
         <input
           className=" w-100 p-2 ps-3 rounded border-gray"
           type="text"
           placeholder="e.g.Stephen King"
+          onChange={(e) => {
+            setUserDetails({ ...userDetails, name: e.target.value });
+            setErrorMessage({ ...errorMessage, name: "" });
+          }}
+          // onBlur={() => {
+          //   if (userDetails.name === "") {
+          //     setErrorMessage({
+          //       ...errorMessage,
+          //       name: "This field is required",
+          //     });
+          //   } else {
+          //     setErrorMessage({
+          //       ...errorMessage,
+          //       name: "",
+          //     });
+          //   }
+          // }}
         />
       </div>
       <div>
-        <label className=" fw-semibold" htmlFor="name">
-          Email Address
-        </label>
+        <div className="d-flex justify-content-between align-items-center">
+          <label className=" fw-semibold" htmlFor="name">
+            Email Address
+          </label>
+          <small className="text-red fw-semibold">{errorMessage.email}</small>
+        </div>
+
         <input
           className=" w-100 p-2 ps-3 rounded border-gray"
           type="email"
           placeholder="e.g.Stephen King"
+          onChange={(e) => {
+            setUserDetails({ ...userDetails, email: e.target.value });
+            setErrorMessage({ ...errorMessage, email: "" });
+          }}
         />
       </div>
       <div>
-        <label className=" fw-semibold" htmlFor="name">
-          Phone Number
-        </label>
+        <div className="d-flex justify-content-between align-items-center">
+          <label className=" fw-semibold" htmlFor="name">
+            Phone Number
+          </label>
+          <small className="text-red fw-semibold">{errorMessage.email}</small>
+        </div>
+
         <input
           className=" w-100 p-2 ps-3 rounded border-gray"
           type="text"
           placeholder="e.g.Stephen King"
+          onChange={(e) => {
+            setUserDetails({ ...userDetails, number: e.target.value });
+          }}
         />
       </div>
     </div>
