@@ -6,6 +6,8 @@ import FormContext from "../context/FormContext";
 const SecondPage = () => {
   const { data, handleSelectPlan } = useContext(FormContext);
 
+  const [pickPlan, setPickPlan] = useState(true);
+
   return (
     <div className="second-page">
       <div className="top-section d-flex flex-column gap-3 text-center">
@@ -40,10 +42,30 @@ const SecondPage = () => {
           );
         })}
       </div>
-      <div className="bottom-section mt-4 mt-sm-3 rounded d-flex justify-content-between p-3 align-items-center bg-magnolia">
-        <p className="m-0">Monthly</p>
-        <div className="">toggle</div>
-        <p className="m-0">Yearly</p>
+      <div className="bottom-section mt-4 mt-sm-3 rounded d-flex justify-content-center gap-3 gap-sm-4 p-3 align-items-center bg-magnolia">
+        <p className="m-0 fw-bold">Monthly</p>
+
+        {/* <div class="form-check form-switch d-flex justify-content-center">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            role="switch"
+            id="flexSwitchCheckDefault"
+          />
+          <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+        </div> */}
+        <div
+          className={`slider rounded-5 ${pickPlan ? "" : "active"}`}
+          onClick={() => {
+            setPickPlan(!pickPlan);
+            console.log("jj");
+            console.log(pickPlan);
+          }}
+        >
+          {/* <input type="checkbox" /> */}
+          <span></span>
+        </div>
+        <p className="m-0 fw-bold">Yearly</p>
       </div>
     </div>
   );

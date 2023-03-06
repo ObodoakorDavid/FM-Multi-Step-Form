@@ -220,3 +220,36 @@ main {
 /* ===================== first-page ================  */
 
 /* ===================== second-page ================  */
+
+.slider {
+  background-color: var(--marine-blue);
+  height: 20px;
+  width: 45px;
+  position: relative;
+  cursor: pointer;
+}
+
+.slider input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 7%;
+  height: 14px;
+  width: 15px;
+  border-radius: 30px;
+  background-color: var(--white);
+  transition: 0.4s ease-in-out;
+}
+
+.slider.active::before {
+  transform: translateX(24px);
+}

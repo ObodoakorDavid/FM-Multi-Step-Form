@@ -10,7 +10,7 @@ const FormContext = createContext();
 export default FormContext;
 
 export const FormProvider = ({ children }) => {
-  const [pageIndex, setPageIndex] = useState(0);
+  const [pageIndex, setPageIndex] = useState(1);
   const [userDetails, setUserDetails] = useState({
     name: "",
     email: "",
@@ -150,7 +150,7 @@ export const FormProvider = ({ children }) => {
   };
 
   const handleSecondPage = ()=>{
-    
+
   }
 
   // ============== OverAll ==========
