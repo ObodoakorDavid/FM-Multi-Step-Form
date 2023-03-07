@@ -11,6 +11,7 @@ export default FormContext;
 
 export const FormProvider = ({ children }) => {
   const [pageIndex, setPageIndex] = useState(1);
+  const [monthly, setMonthly] = useState(true);
   const [userDetails, setUserDetails] = useState({
     name: "",
     email: "",
@@ -27,7 +28,8 @@ export const FormProvider = ({ children }) => {
       id: 1,
       img: arcadeIMG,
       heading: "Arcade",
-      paragraph: "$9/mo",
+      monthlyPrice: "$9/mo",
+      yearlyPrice: "$90/mo",
       active: false,
       plan: "monthly",
     },
@@ -35,7 +37,8 @@ export const FormProvider = ({ children }) => {
       id: 2,
       img: AdvancedIMG,
       heading: "Advanced",
-      paragraph: "$12/mo",
+      monthlyPrice: "$12/mo",
+      yearlyPrice: "$120/mo",
       active: false,
       plan: "monthly",
     },
@@ -43,7 +46,8 @@ export const FormProvider = ({ children }) => {
       id: 3,
       img: ProIMG,
       heading: "Pro",
-      paragraph: "$15/mo",
+      monthlyPrice: "$15/mo",
+      yearlyPrice: "$150/mo",
       active: false,
       plan: "monthly",
     },
@@ -56,7 +60,8 @@ export const FormProvider = ({ children }) => {
       paragraph: "Access to multiplayer games",
       active: false,
       plan: "monthly",
-      price: "+$1/mo",
+      monthlyPrice: "$1/mo",
+      yearlyPrice: "$10/mo",
     },
     {
       id: 2,
@@ -64,7 +69,8 @@ export const FormProvider = ({ children }) => {
       paragraph: "Extra 1TB of cloud save",
       active: false,
       plan: "monthly",
-      price: "+$2/mo",
+      monthlyPrice: "$2/mo",
+      yearlyPrice: "$20/mo",
     },
     {
       id: 3,
@@ -72,9 +78,14 @@ export const FormProvider = ({ children }) => {
       paragraph: "$15/mo",
       active: false,
       plan: "monthly",
-      price: "+$2/mo",
+      monthlyPrice: "$2/mo",
+      yearlyPrice: "$20/mo",
     },
   ]);
+
+  const [lastPageData, setLastPageData] = useState({
+    name: "hi",
+  });
 
   let pageDetails = [
     {
@@ -128,15 +139,51 @@ export const FormProvider = ({ children }) => {
   // ============== SecondPage ==========
 
   const handleSelectPlan = (e, datum) => {
-    console.log(e.target.classList);
     let updatedData = data.map((each) =>
       each.id === datum.id
         ? { ...each, active: true }
         : { ...each, active: false }
     );
-    console.log(updatedData);
+    // let updatedData = data.map((each) => {
+    //   if (each.id == datum.id) {
+    //     return { ...each, active: true };
+    //   } else {
+    //     return each;
+    //   }
+    // });
     setData(updatedData);
   };
+
+  const handleMonthly = () => {
+    if (monthly == true) {
+      setData(
+        data.map((datum) => {
+          return { ...datum, plan: "monthly" };
+        })
+      );
+      setThirdPageData(
+        thirdPageData.map((datum) => {
+          console.log(datum.monthlyPrice);
+          return { ...datum, plan: "monthly" };
+        })
+      );
+    } else {
+      setData(
+        data.map((datum) => {
+          return { ...datum, plan: "yearly" };
+        })
+      );
+      setThirdPageData(
+        thirdPageData.map((datum) => {
+          return { ...datum, plan: "monthly" };
+        })
+      );
+    }
+  };
+
+  const handleSecondPage = () => {};
+
+  // ============== THirdPage ==========
 
   const handleAddOns = (checked, datum) => {
     const updatedData = thirdPageData.map((each) => {
@@ -148,10 +195,6 @@ export const FormProvider = ({ children }) => {
     });
     setThirdPageData(updatedData);
   };
-
-  const handleSecondPage = ()=>{
-
-  }
 
   // ============== OverAll ==========
 
@@ -189,6 +232,9 @@ export const FormProvider = ({ children }) => {
     setUserDetails,
     errorMessage,
     setErrorMessage,
+    handleMonthly,
+    monthly,
+    setMonthly,
   };
   return (
     <FormContext.Provider value={FormData}>{children}</FormContext.Provider>

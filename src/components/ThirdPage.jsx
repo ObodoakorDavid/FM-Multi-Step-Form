@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 import FormContext from "../context/FormContext";
 
 const ThirdPage = () => {
-  const { thirdPageData, handleAddOns } = useContext(FormContext);
+  const { thirdPageData, handleAddOns, monthly } = useContext(FormContext);
 
   return (
     <div className="third-page d-flex flex-column gap-4">
@@ -29,7 +29,9 @@ const ThirdPage = () => {
               <h4 className="m-0 fw-bold fs-5">{datum.heading}</h4>
               <p className="m-0 fw-semibold">{datum.paragraph}</p>
             </div>
-            <p className=" fw-semibold">{datum.price}</p>
+            <p className=" fw-semibold">
+              {monthly ? datum.monthlyPrice : datum.yearlyPrice}
+            </p>
           </div>
         );
       })}
