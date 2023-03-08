@@ -64,8 +64,6 @@ const FirstPage = () => {
           type="text"
           placeholder="e.g.Stephen King"
           onChange={(e) => {
-            console.log("ran");
-            console.log(userDetails.number);
             setUserDetails({ ...userDetails, number: e.target.value });
             setErrorMessage({ ...errorMessage, number: "" });
           }}

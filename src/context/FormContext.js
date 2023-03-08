@@ -84,7 +84,8 @@ export const FormProvider = ({ children }) => {
   ]);
 
   const [lastPageData, setLastPageData] = useState({
-    name: "hi",
+    plan: {},
+    addOns: [],
   });
 
   let pageDetails = [
@@ -181,7 +182,15 @@ export const FormProvider = ({ children }) => {
     }
   };
 
-  const handleSecondPage = () => {};
+  const handleSecondPage = () => {
+    let each = data.find((datum) => datum.active == true);
+    console.log(each);
+    if (each) {
+      return "complete";
+    } else {
+      return "not";
+    }
+  };
 
   // ============== THirdPage ==========
 
@@ -203,10 +212,16 @@ export const FormProvider = ({ children }) => {
       return;
     }
 
-    // if (handleFirstPage() == "complete") {
-    //   setPageIndex((prev) => prev + 1);
-    // }
-    setPageIndex((prev) => prev + 1);
+    if (handleFirstPage() == "complete" && pageIndex == 0) {
+      setPageIndex((prev) => prev + 1);
+    }
+    console.log(handleSecondPage());
+    if (handleSecondPage() == "complete" && pageIndex == 1) {
+      setPageIndex((prev) => prev + 1);
+    }
+
+    // ==============
+    // setPageIndex((prev) => prev + 1);
   };
 
   const goBack = () => {
