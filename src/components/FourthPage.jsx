@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import FormContext from "../context/FormContext";
 
 const FourthPage = () => {
-  const { lastPageData, monthly } = useContext(FormContext);
+  const { state, monthly, setPageIndex } = useContext(FormContext);
 
   return (
     <div className="fourth-page">
@@ -11,34 +11,34 @@ const FourthPage = () => {
         <div className="border-bottom d-flex justify-content-between p-2">
           <div>
             <p className="m-0 pb-1 fw-semibold">
-              {`${lastPageData.choosenPlan.heading}
+              {`${state.fourthPage.choosenPlan.heading}
               (${monthly ? "Monthly" : "Yearly"})`}
-              {/* ({lastPageData.choosenPlan.heading}) */}
             </p>
-            <small className="text-decoration-underline fs-7 fw-semibold">
+            <small
+              onClick={() => {
+                setPageIndex(1);
+              }}
+              className="text-decoration-underline fs-7 fw-semibold"
+            >
               Change
             </small>
           </div>
           <p>
             {monthly
-              ? `$${lastPageData.choosenPlan.monthlyPrice}/mo`
-              : `$${lastPageData.choosenPlan.yearlyPrice}/mo`}
+              ? `$${state.fourthPage.choosenPlan.monthlyPrice}/mo`
+              : `$${state.fourthPage.choosenPlan.yearlyPrice}/mo`}
           </p>
         </div>
-        <div className="d-flex justify-content-between p-2">
-          <div>
-            <p className="m-0 pb-1 fw-semibold">Online service</p>
-            <small className="d-none">Change</small>
-          </div>
-          <p>$9/mo</p>
-        </div>
-        <div className="d-flex justify-content-between p-2">
-          <div>
-            <p className="m-0 pb-1 fw-semibold">Arcade (Monthly)</p>
-            <small className="d-none">Larger storage</small>
-          </div>
-          <p>$9/mo</p>
-        </div>
+        {state.fourthPage.addOns.map((datum) => {
+          return (
+            <div key={datum.id} className="d-flex justify-content-between p-2">
+              <p className="m-0 pb-1 fw-semibold">{datum.heading}</p>
+              <p className="m-0">{`$${
+                monthly ? datum.monthlyPrice : datum.yearlyPrice
+              }/mo`}</p>
+            </div>
+          );
+        })}
       </div>
       <div className="d-flex justify-content-between p-2 pt-4">
         <p className="fw-semibold">Total (per Month)</p>

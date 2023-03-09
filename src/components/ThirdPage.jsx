@@ -4,11 +4,11 @@ import React, { useContext } from "react";
 import FormContext from "../context/FormContext";
 
 const ThirdPage = () => {
-  const { thirdPageData, handleAddOns, monthly } = useContext(FormContext);
+  const { state, handleAddOns, monthly } = useContext(FormContext);
 
   return (
     <div className="third-page d-flex flex-column gap-4">
-      {thirdPageData.map((datum) => {
+      {state.thirdPage.map((datum) => {
         return (
           <div
             className={`d-flex gap-3 align-items-center border-gray rounded p-3 ${

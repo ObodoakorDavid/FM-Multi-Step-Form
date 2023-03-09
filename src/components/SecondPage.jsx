@@ -4,13 +4,13 @@ import React, { useState, useContext, useEffect } from "react";
 import FormContext from "../context/FormContext";
 
 const SecondPage = () => {
-  const { data, handleSelectPlan, handleMonthly, monthly, setMonthly } =
+  const { state, handleSelectPlan, handleMonthly, monthly, setMonthly } =
     useContext(FormContext);
 
   return (
     <div className="second-page">
       <div className="top-section d-flex flex-column gap-3 text-center">
-        {data.map((datum) => {
+        {state.secondPage.map((datum) => {
           return (
             <div
               className={`d-flex gap-3 align-items-center p-3 p-md-2 text-start border-gray  ${

@@ -104,6 +104,15 @@ body {
   color: red;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.form button:hover {
+  background-color: var(--pastel-blue);
+  color: var(--white);
+}
+
 /* ============= Progress  ==================  */
 
 .top-half {

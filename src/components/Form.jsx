@@ -22,11 +22,14 @@ const Form = () => {
           onClick={() => {
             goBack();
           }}
-          className="m-0"
+          className={`m-0 text-cool-gray cursor-pointer ${
+            // pageIndex == 0 ? "visually-hidden" : "visible"
+            'k'
+          }`}
         >
           Go Back
         </p>
-        <button className="btn">Next Step</button>
+        <button className="btn btn1">Next Step</button>
       </div>
     </form>
   );

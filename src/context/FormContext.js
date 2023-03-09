@@ -11,83 +11,6 @@ export default FormContext;
 
 export const FormProvider = ({ children }) => {
   const [pageIndex, setPageIndex] = useState(1);
-  const [monthly, setMonthly] = useState(true);
-  const [userDetails, setUserDetails] = useState({
-    name: "",
-    email: "",
-    number: "",
-  });
-  const [errorMessage, setErrorMessage] = useState({
-    name: "",
-    email: "",
-    number: "",
-  });
-
-  const [data, setData] = useState([
-    {
-      id: 1,
-      img: arcadeIMG,
-      heading: "Arcade",
-      monthlyPrice: 9,
-      yearlyPrice: 90,
-      active: false,
-      plan: "monthly",
-    },
-    {
-      id: 2,
-      img: AdvancedIMG,
-      heading: "Advanced",
-      monthlyPrice: 12,
-      yearlyPrice: 120,
-      active: false,
-      plan: "monthly",
-    },
-    {
-      id: 3,
-      img: ProIMG,
-      heading: "Pro",
-      monthlyPrice: 15,
-      yearlyPrice: 150,
-      active: false,
-      plan: "monthly",
-    },
-  ]);
-
-  const [thirdPageData, setThirdPageData] = useState([
-    {
-      id: 1,
-      heading: "Online service",
-      paragraph: "Access to multiplayer games",
-      active: false,
-      plan: "monthly",
-      monthlyPrice: 1,
-      yearlyPrice: 10,
-    },
-    {
-      id: 2,
-      heading: "Larger storage",
-      paragraph: "Extra 1TB of cloud save",
-      active: false,
-      plan: "monthly",
-      monthlyPrice: 2,
-      yearlyPrice: 20,
-    },
-    {
-      id: 3,
-      heading: "Pro",
-      paragraph: "$15/mo",
-      active: false,
-      plan: "monthly",
-      monthlyPrice: 2,
-      yearlyPrice: 20,
-    },
-  ]);
-
-  const [lastPageData, setLastPageData] = useState({
-    choosenPlan: {},
-    addOns: [],
-  });
-
   let pageDetails = [
     {
       title: "Personal Info",
@@ -111,6 +34,81 @@ export const FormProvider = ({ children }) => {
         "Thanks for confirming your subcription! We hope you have fun using our platform. if you ever need support, please feel free to email us at support@loremgaming.com",
     },
   ];
+  const [monthly, setMonthly] = useState(true);
+  const [state, setState] = useState({
+    userDetails: {
+      name: "",
+      email: "",
+      number: "",
+    },
+    errorMessage: {
+      name: "",
+      email: "",
+      number: "",
+    },
+    secondPage: [
+      {
+        id: 1,
+        img: arcadeIMG,
+        heading: "Arcade",
+        monthlyPrice: 9,
+        yearlyPrice: 90,
+        active: false,
+        plan: "monthly",
+      },
+      {
+        id: 2,
+        img: AdvancedIMG,
+        heading: "Advanced",
+        monthlyPrice: 12,
+        yearlyPrice: 120,
+        active: false,
+        plan: "monthly",
+      },
+      {
+        id: 3,
+        img: ProIMG,
+        heading: "Pro",
+        monthlyPrice: 15,
+        yearlyPrice: 150,
+        active: false,
+        plan: "monthly",
+      },
+    ],
+    thirdPage: [
+      {
+        id: 1,
+        heading: "Online service",
+        paragraph: "Access to multiplayer games",
+        active: false,
+        plan: "monthly",
+        monthlyPrice: 1,
+        yearlyPrice: 10,
+      },
+      {
+        id: 2,
+        heading: "Larger storage",
+        paragraph: "Extra 1TB of cloud save",
+        active: false,
+        plan: "monthly",
+        monthlyPrice: 2,
+        yearlyPrice: 20,
+      },
+      {
+        id: 3,
+        heading: "Pro",
+        paragraph: "$15/mo",
+        active: false,
+        plan: "monthly",
+        monthlyPrice: 2,
+        yearlyPrice: 20,
+      },
+    ],
+    fourthPage: {
+      choosenPlan: {},
+      addOns: [],
+    },
+  });
 
   // ============== FristPage ==========
 
@@ -120,17 +118,21 @@ export const FormProvider = ({ children }) => {
       email: "",
       number: "",
     };
-    if (userDetails.name == "") {
+    if (state.userDetails.name == "") {
       temp = { ...temp, name: "This field is required" };
     }
-    if (userDetails.email == "") {
+    if (state.userDetails.email == "") {
       temp = { ...temp, email: "This field is required" };
     }
-    if (userDetails.number == "") {
+    if (state.userDetails.number == "") {
       temp = { ...temp, number: "This field is required" };
     }
-    setErrorMessage(temp);
-    if (userDetails.name && userDetails.email && userDetails.number) {
+    setState({ ...state, errorMessage: temp });
+    if (
+      state.userDetails.name &&
+      state.userDetails.email &&
+      state.userDetails.number
+    ) {
       return "complete";
     } else {
       return;
@@ -140,48 +142,44 @@ export const FormProvider = ({ children }) => {
   // ============== SecondPage ==========
 
   const handleSelectPlan = (datum) => {
-    let updatedData = data.map((each) =>
+    let updatedData = state.secondPage.map((each) =>
       each.id === datum.id
         ? { ...each, active: true }
         : { ...each, active: false }
     );
-    setLastPageData({ ...lastPageData, choosenPlan: datum });
-    // let updatedData = data.map((each) => {
-    //   if (each.id == datum.id) {
-    //     return { ...each, active: true };
-    //   } else {
-    //     return each;
-    //   }
-    // });
-    console.log(datum);
-    setData(updatedData);
+
+    setState({
+      ...state,
+      secondPage: updatedData,
+      fourthPage: {
+        ...state.fourthPage,
+        choosenPlan: datum,
+      },
+    });
   };
 
   const handleMonthly = () => {
     if (monthly == true) {
-      let tempData = data.map((datum) => {
+      let tempData = state.secondPage.map((datum) => {
         return { ...datum, plan: "monthly" };
       });
-      setData(tempData);
-      let tempData1 = thirdPageData.map((datum) => {
+      let tempData1 = state.thirdPage.map((datum) => {
         return { ...datum, plan: "monthly" };
       });
-      setThirdPageData(tempData1);
+      setState({ ...state, secondPage: tempData, thirdPage: tempData1 });
     } else {
-      let tempData = data.map((datum) => {
+      let tempData = state.secondPage.map((datum) => {
         return { ...datum, plan: "yearly" };
       });
-      setData(tempData);
-      let tempData1 = thirdPageData.map((datum) => {
+      let tempData1 = state.thirdPage.map((datum) => {
         return { ...datum, plan: "yearly" };
       });
-      setThirdPageData(tempData1);
+      setState({ ...state, secondPage: tempData, thirdPage: tempData1 });
     }
   };
 
   const handleSecondPage = () => {
-    let each = data.find((datum) => datum.active == true);
-    console.log(each);
+    let each = state.secondPage.find((datum) => datum.active == true);
     if (each) {
       return "complete";
     } else {
@@ -192,16 +190,24 @@ export const FormProvider = ({ children }) => {
   // ============== ThirdPage ==========
 
   const handleAddOns = (checked, datum) => {
-    const updatedData = thirdPageData.map((each) => {
-      // ============
+    const updatedData = state.thirdPage.map((each) => {
       if (datum.id === each.id) {
         return { ...each, active: checked };
       } else {
         return each;
       }
     });
-    setThirdPageData(updatedData);
-    console.log(lastPageData);
+
+    setState({
+      ...state,
+      thirdPage: updatedData,
+      fourthPage: {
+        ...state.fourthPage,
+        addOns: updatedData.filter(
+          (existingItem) => existingItem.active == true
+        ),
+      },
+    });
   };
 
   // ============== OverAll ==========
@@ -232,24 +238,18 @@ export const FormProvider = ({ children }) => {
   };
 
   let FormData = {
+    state,
+    setState,
     pageIndex,
     setPageIndex,
     pageDetails,
     nextStep,
     goBack,
-    data,
-    setData,
     handleSelectPlan,
-    thirdPageData,
     handleAddOns,
-    userDetails,
-    setUserDetails,
-    errorMessage,
-    setErrorMessage,
     handleMonthly,
     monthly,
     setMonthly,
-    lastPageData,
   };
   return (
     <FormContext.Provider value={FormData}>{children}</FormContext.Provider>
