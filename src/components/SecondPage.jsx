@@ -16,8 +16,8 @@ const SecondPage = () => {
               className={`d-flex gap-3 align-items-center p-3 p-md-2 text-start border-gray  ${
                 datum.active === true ? " active" : ""
               }`}
-              onClick={(e) => {
-                handleSelectPlan(e, datum);
+              onClick={() => {
+                handleSelectPlan(datum);
               }}
               key={datum.id}
             >
@@ -25,7 +25,9 @@ const SecondPage = () => {
               <div>
                 <small className="m-0 fw-bold">{datum.heading}</small>
                 <p className="m-0 text-cool-gray fw-semibold">
-                  {monthly ? datum.monthlyPrice : datum.yearlyPrice}
+                  {monthly
+                    ? `$${datum.monthlyPrice}/mo`
+                    : `$${datum.yearlyPrice}/mo`}
                 </p>
                 <small
                   className={`m-0 fw-semibold ${
@@ -45,6 +47,7 @@ const SecondPage = () => {
           className={`slider rounded-5 ${monthly ? "" : "active"}`}
           onClick={() => {
             setMonthly((prev) => !prev);
+            console.log(monthly);
             handleMonthly(monthly);
           }}
         >

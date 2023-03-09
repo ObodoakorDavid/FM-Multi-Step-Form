@@ -1,18 +1,29 @@
 /** @format */
-import React from "react";
+import React, { useContext } from "react";
+import FormContext from "../context/FormContext";
 
 const FourthPage = () => {
+  const { lastPageData, monthly } = useContext(FormContext);
+
   return (
     <div className="fourth-page">
       <div className="d-flex flex-column gap-3">
         <div className="border-bottom d-flex justify-content-between p-2">
           <div>
-            <p className="m-0 pb-1 fw-semibold">Arcade (Monthly)</p>
-            <small className="text-decoration-underline fw-semibold">
+            <p className="m-0 pb-1 fw-semibold">
+              {`${lastPageData.choosenPlan.heading}
+              (${monthly ? "Monthly" : "Yearly"})`}
+              {/* ({lastPageData.choosenPlan.heading}) */}
+            </p>
+            <small className="text-decoration-underline fs-7 fw-semibold">
               Change
             </small>
           </div>
-          <p>$9/mo</p>
+          <p>
+            {monthly
+              ? `$${lastPageData.choosenPlan.monthlyPrice}/mo`
+              : `$${lastPageData.choosenPlan.yearlyPrice}/mo`}
+          </p>
         </div>
         <div className="d-flex justify-content-between p-2">
           <div>

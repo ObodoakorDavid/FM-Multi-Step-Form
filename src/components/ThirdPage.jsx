@@ -30,7 +30,9 @@ const ThirdPage = () => {
               <p className="m-0 fw-semibold">{datum.paragraph}</p>
             </div>
             <p className=" fw-semibold">
-              {monthly ? datum.monthlyPrice : datum.yearlyPrice}
+              {monthly
+                ? `$${datum.monthlyPrice}/mo`
+                : `$${datum.yearlyPrice}/mo`}
             </p>
           </div>
         );

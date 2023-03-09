@@ -28,8 +28,8 @@ export const FormProvider = ({ children }) => {
       id: 1,
       img: arcadeIMG,
       heading: "Arcade",
-      monthlyPrice: "$9/mo",
-      yearlyPrice: "$90/mo",
+      monthlyPrice: 9,
+      yearlyPrice: 90,
       active: false,
       plan: "monthly",
     },
@@ -37,8 +37,8 @@ export const FormProvider = ({ children }) => {
       id: 2,
       img: AdvancedIMG,
       heading: "Advanced",
-      monthlyPrice: "$12/mo",
-      yearlyPrice: "$120/mo",
+      monthlyPrice: 12,
+      yearlyPrice: 120,
       active: false,
       plan: "monthly",
     },
@@ -46,8 +46,8 @@ export const FormProvider = ({ children }) => {
       id: 3,
       img: ProIMG,
       heading: "Pro",
-      monthlyPrice: "$15/mo",
-      yearlyPrice: "$150/mo",
+      monthlyPrice: 15,
+      yearlyPrice: 150,
       active: false,
       plan: "monthly",
     },
@@ -60,8 +60,8 @@ export const FormProvider = ({ children }) => {
       paragraph: "Access to multiplayer games",
       active: false,
       plan: "monthly",
-      monthlyPrice: "$1/mo",
-      yearlyPrice: "$10/mo",
+      monthlyPrice: 1,
+      yearlyPrice: 10,
     },
     {
       id: 2,
@@ -69,8 +69,8 @@ export const FormProvider = ({ children }) => {
       paragraph: "Extra 1TB of cloud save",
       active: false,
       plan: "monthly",
-      monthlyPrice: "$2/mo",
-      yearlyPrice: "$20/mo",
+      monthlyPrice: 2,
+      yearlyPrice: 20,
     },
     {
       id: 3,
@@ -78,13 +78,13 @@ export const FormProvider = ({ children }) => {
       paragraph: "$15/mo",
       active: false,
       plan: "monthly",
-      monthlyPrice: "$2/mo",
-      yearlyPrice: "$20/mo",
+      monthlyPrice: 2,
+      yearlyPrice: 20,
     },
   ]);
 
   const [lastPageData, setLastPageData] = useState({
-    plan: {},
+    choosenPlan: {},
     addOns: [],
   });
 
@@ -139,12 +139,13 @@ export const FormProvider = ({ children }) => {
 
   // ============== SecondPage ==========
 
-  const handleSelectPlan = (e, datum) => {
+  const handleSelectPlan = (datum) => {
     let updatedData = data.map((each) =>
       each.id === datum.id
         ? { ...each, active: true }
         : { ...each, active: false }
     );
+    setLastPageData({ ...lastPageData, choosenPlan: datum });
     // let updatedData = data.map((each) => {
     //   if (each.id == datum.id) {
     //     return { ...each, active: true };
@@ -152,33 +153,29 @@ export const FormProvider = ({ children }) => {
     //     return each;
     //   }
     // });
+    console.log(datum);
     setData(updatedData);
   };
 
   const handleMonthly = () => {
     if (monthly == true) {
-      setData(
-        data.map((datum) => {
-          return { ...datum, plan: "monthly" };
-        })
-      );
-      setThirdPageData(
-        thirdPageData.map((datum) => {
-          console.log(datum.monthlyPrice);
-          return { ...datum, plan: "monthly" };
-        })
-      );
+      let tempData = data.map((datum) => {
+        return { ...datum, plan: "monthly" };
+      });
+      setData(tempData);
+      let tempData1 = thirdPageData.map((datum) => {
+        return { ...datum, plan: "monthly" };
+      });
+      setThirdPageData(tempData1);
     } else {
-      setData(
-        data.map((datum) => {
-          return { ...datum, plan: "yearly" };
-        })
-      );
-      setThirdPageData(
-        thirdPageData.map((datum) => {
-          return { ...datum, plan: "monthly" };
-        })
-      );
+      let tempData = data.map((datum) => {
+        return { ...datum, plan: "yearly" };
+      });
+      setData(tempData);
+      let tempData1 = thirdPageData.map((datum) => {
+        return { ...datum, plan: "yearly" };
+      });
+      setThirdPageData(tempData1);
     }
   };
 
@@ -192,10 +189,11 @@ export const FormProvider = ({ children }) => {
     }
   };
 
-  // ============== THirdPage ==========
+  // ============== ThirdPage ==========
 
   const handleAddOns = (checked, datum) => {
     const updatedData = thirdPageData.map((each) => {
+      // ============
       if (datum.id === each.id) {
         return { ...each, active: checked };
       } else {
@@ -203,6 +201,7 @@ export const FormProvider = ({ children }) => {
       }
     });
     setThirdPageData(updatedData);
+    console.log(lastPageData);
   };
 
   // ============== OverAll ==========
@@ -212,16 +211,16 @@ export const FormProvider = ({ children }) => {
       return;
     }
 
-    if (handleFirstPage() == "complete" && pageIndex == 0) {
-      setPageIndex((prev) => prev + 1);
-    }
-    console.log(handleSecondPage());
-    if (handleSecondPage() == "complete" && pageIndex == 1) {
-      setPageIndex((prev) => prev + 1);
-    }
+    // if (handleFirstPage() == "complete" && pageIndex == 0) {
+    //   setPageIndex((prev) => prev + 1);
+    // }
+    // console.log(handleSecondPage());
+    // if (handleSecondPage() == "complete" && pageIndex == 1) {
+    //   setPageIndex((prev) => prev + 1);
+    // }
 
     // ==============
-    // setPageIndex((prev) => prev + 1);
+    setPageIndex((prev) => prev + 1);
   };
 
   const goBack = () => {
@@ -250,6 +249,7 @@ export const FormProvider = ({ children }) => {
     handleMonthly,
     monthly,
     setMonthly,
+    lastPageData,
   };
   return (
     <FormContext.Provider value={FormData}>{children}</FormContext.Provider>
