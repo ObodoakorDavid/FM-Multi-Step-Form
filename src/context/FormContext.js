@@ -130,7 +130,7 @@ export const FormProvider = ({ children }) => {
       choosenPlan: {},
       addOns: [],
       totalPrice: function (monthly) {
-        if (monthly == true) {
+        if (monthly === true) {
           let total = this.addOns.reduce((total, curValue) => {
             return total + curValue.monthlyPrice;
           }, 0);
@@ -155,13 +155,13 @@ export const FormProvider = ({ children }) => {
       email: "",
       number: "",
     };
-    if (state.userDetails.name == "") {
+    if (state.userDetails.name === "") {
       temp = { ...temp, name: "This field is required" };
     }
-    if (state.userDetails.email == "") {
+    if (state.userDetails.email === "") {
       temp = { ...temp, email: "This field is required" };
     }
-    if (state.userDetails.number == "") {
+    if (state.userDetails.number === "") {
       temp = { ...temp, number: "This field is required" };
     }
     setState({ ...state, errorMessage: temp });
@@ -196,7 +196,7 @@ export const FormProvider = ({ children }) => {
   };
 
   const handleMonthly = () => {
-    if (monthly == true) {
+    if (monthly === true) {
       let tempData = state.secondPage.map((datum) => {
         return { ...datum, plan: "monthly" };
       });
@@ -216,7 +216,7 @@ export const FormProvider = ({ children }) => {
   };
 
   const handleSecondPage = () => {
-    let each = state.secondPage.find((datum) => datum.active == true);
+    let each = state.secondPage.find((datum) => datum.active === true);
     if (each) {
       return "complete";
     } else {
@@ -241,7 +241,7 @@ export const FormProvider = ({ children }) => {
       fourthPage: {
         ...state.fourthPage,
         addOns: updatedData.filter(
-          (existingItem) => existingItem.active == true
+          (existingItem) => existingItem.active === true
         ),
       },
     });
@@ -261,21 +261,21 @@ export const FormProvider = ({ children }) => {
       return;
     }
 
-    if (handleFirstPage() == "complete" && pageIndex == 0) {
+    if (handleFirstPage() === "complete" && pageIndex === 0) {
       setPageIndex((prev) => prev + 1);
     }
     console.log(handleSecondPage());
-    if (handleSecondPage() == "complete" && pageIndex == 1) {
+    if (handleSecondPage() === "complete" && pageIndex === 1) {
       setPageIndex((prev) => prev + 1);
     }
-    if (handleThirdPage() == "complete" && pageIndex == 2) {
+    if (handleThirdPage() === "complete" && pageIndex === 2) {
       setPageIndex((prev) => prev + 1);
     }
     if (
-      handleFirstPage() == "complete" &&
-      handleSecondPage() == "complete" &&
-      handleThirdPage() == "complete" &&
-      pageIndex == 3
+      handleFirstPage() === "complete" &&
+      handleSecondPage() === "complete" &&
+      handleThirdPage() === "complete" &&
+      pageIndex === 3
     ) {
       setPageIndex((prev) => prev + 1);
     }
@@ -286,7 +286,7 @@ export const FormProvider = ({ children }) => {
   };
 
   const goBack = () => {
-    if (pageIndex == 0) {
+    if (pageIndex === 0) {
       return;
     }
     console.log(pageIndex);

@@ -9,7 +9,7 @@ const Form = () => {
   return (
     <form
       className={`form pt-4 ps-4 pe-4 pb-4 ${
-        pageIndex == 4 ? "pt-5 text-center" : ""
+        pageIndex === 4 ? "pt-5 text-center" : ""
       }`}
       onSubmit={(e) => {
         e.preventDefault();
@@ -36,7 +36,7 @@ const Form = () => {
           }}
           className="m-0 text-cool-gray cursor-pointer back-btn"
           style={{
-            visibility: pageIndex == 0 ? "hidden" : "visible",
+            visibility: pageIndex === 0 ? "hidden" : "visible",
           }}
         >
           Go Back

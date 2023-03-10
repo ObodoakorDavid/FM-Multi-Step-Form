@@ -1,6 +1,5 @@
 /** @format */
 
-import logo from "./logo.svg";
 import "./App.css";
 import { FormProvider } from "./context/FormContext";
 import Layout from "./utils/Layout";

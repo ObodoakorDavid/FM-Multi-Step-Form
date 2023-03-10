@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import FormContext from "../context/FormContext";
 
 const SecondPage = () => {
@@ -53,11 +53,7 @@ const SecondPage = () => {
             handleMonthly(monthly);
           }}
         ></div>
-        <p
-          className={`m-0 fw-bold  ${
-            !monthly ? "" : "text-cool-gray"
-          }`}
-        >
+        <p className={`m-0 fw-bold  ${!monthly ? "" : "text-cool-gray"}`}>
           Yearly
         </p>
       </div>
