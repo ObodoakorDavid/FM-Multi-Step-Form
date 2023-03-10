@@ -11,7 +11,7 @@ const Progress = () => {
         const { id, step, info } = eachProgress;
         return (
           <div key={id} className="d-md-flex align-items-md-baseline gap-3">
-            <small className={pageIndex === id ? "active" : ""}>{id}</small>
+            <small className={pageIndex === id - 1 ? "active" : ""}>{id}</small>
             <div className="d-none d-md-block text-md-start">
               <p className="text-cool-gray m-0">{step}</p>
               <p className=" text-white fw-bold m-0">{info}</p>

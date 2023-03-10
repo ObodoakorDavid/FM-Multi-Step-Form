@@ -220,7 +220,7 @@ export const FormProvider = ({ children }) => {
     if (each) {
       return "complete";
     } else {
-      return "not";
+      return;
     }
   };
 
@@ -247,6 +247,13 @@ export const FormProvider = ({ children }) => {
     });
   };
 
+  const handleThirdPage = () => {
+    let picked = state.thirdPage.find((each) => each.active === true);
+    if (picked) {
+      return "complete";
+    }
+  };
+
   // ============== OverAll ==========
 
   const nextStep = () => {
@@ -254,17 +261,28 @@ export const FormProvider = ({ children }) => {
       return;
     }
 
-    // if (handleFirstPage() == "complete" && pageIndex == 0) {
-    //   setPageIndex((prev) => prev + 1);
-    // }
-    // console.log(handleSecondPage());
-    // if (handleSecondPage() == "complete" && pageIndex == 1) {
-    //   setPageIndex((prev) => prev + 1);
-    // }
+    if (handleFirstPage() == "complete" && pageIndex == 0) {
+      setPageIndex((prev) => prev + 1);
+    }
+    console.log(handleSecondPage());
+    if (handleSecondPage() == "complete" && pageIndex == 1) {
+      setPageIndex((prev) => prev + 1);
+    }
+    if (handleThirdPage() == "complete" && pageIndex == 2) {
+      setPageIndex((prev) => prev + 1);
+    }
+    if (
+      handleFirstPage() == "complete" &&
+      handleSecondPage() == "complete" &&
+      handleThirdPage() == "complete" &&
+      pageIndex == 3
+    ) {
+      setPageIndex((prev) => prev + 1);
+    }
 
     // ==============
-    setPageIndex((prev) => prev + 1);
-    console.log(pageIndex);
+    // setPageIndex((prev) => prev + 1);
+    // console.log(pageIndex);
   };
 
   const goBack = () => {

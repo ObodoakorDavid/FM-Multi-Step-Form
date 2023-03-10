@@ -16,8 +16,8 @@ const Form = () => {
         nextStep();
       }}
     >
-      <div className={pageIndex === 4 ? "d-flex flex-column-reverse " : ""}>
-        <div className={pageIndex === 4 ? "pb-5" : ""}>
+      <div className={pageIndex === 4 ? "d-flex flex-column-reverse h-100 justify-content-center " : ""}>
+        <div>
           <h1>{pageDetails[pageIndex].title}</h1>
           <p className="text-cool-gray fw-semibold">
             {pageDetails[pageIndex].detail}

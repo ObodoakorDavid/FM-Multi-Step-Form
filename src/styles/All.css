@@ -147,6 +147,7 @@ body {
   border: 1.5px solid var(--pastel-blue);
   color: var(--pastel-blue);
   font-weight: bolder;
+  transition: 0.4s ease-in-out;
 }
 
 .progress-numbers small.active {
@@ -197,7 +198,7 @@ body {
 .inner-layout {
   max-width: 900px;
   margin: 0 auto;
-  background-color: white;
+  background-color: var(--white);
 }
 
 @media (min-width: 768px) {

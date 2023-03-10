@@ -9,7 +9,7 @@ import SecondPage from "./SecondPage";
 import ThirdPage from "./ThirdPage";
 
 const CurrentPage = () => {
-  const { pageIndex, pageDetails } = useContext(FormContext);
+  const { pageIndex } = useContext(FormContext);
 
   if (pageIndex === 0) {
     return <FirstPage />;
