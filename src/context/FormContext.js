@@ -10,7 +10,7 @@ const FormContext = createContext();
 export default FormContext;
 
 export const FormProvider = ({ children }) => {
-  const [pageIndex, setPageIndex] = useState(1);
+  const [pageIndex, setPageIndex] = useState(0);
   let pageDetails = [
     {
       title: "Personal Info",
@@ -46,6 +46,28 @@ export const FormProvider = ({ children }) => {
       email: "",
       number: "",
     },
+    progress: [
+      {
+        id: 1,
+        step: "STEP 1",
+        info: "YOUR INFO",
+      },
+      {
+        id: 2,
+        step: "STEP 2",
+        info: "SELECT PLAN",
+      },
+      {
+        id: 3,
+        step: "STEP 3",
+        info: "ADD-ONS",
+      },
+      {
+        id: 4,
+        step: "STEP 4",
+        info: "SUMMARY",
+      },
+    ],
     secondPage: [
       {
         id: 1,
@@ -228,7 +250,7 @@ export const FormProvider = ({ children }) => {
   // ============== OverAll ==========
 
   const nextStep = () => {
-    if (pageIndex == 4) {
+    if (pageIndex === 4) {
       return;
     }
 
@@ -242,12 +264,14 @@ export const FormProvider = ({ children }) => {
 
     // ==============
     setPageIndex((prev) => prev + 1);
+    console.log(pageIndex);
   };
 
   const goBack = () => {
     if (pageIndex == 0) {
       return;
     }
+    console.log(pageIndex);
 
     setPageIndex(pageIndex - 1);
   };

@@ -2,6 +2,7 @@
 
 import React, { useContext } from "react";
 import FormContext from "../context/FormContext";
+import FifthPage from "./FifthPage";
 import FirstPage from "./FirstPage";
 import FourthPage from "./FourthPage";
 import SecondPage from "./SecondPage";
@@ -18,6 +19,8 @@ const CurrentPage = () => {
     return <ThirdPage />;
   } else if (pageIndex === 3) {
     return <FourthPage />;
+  } else if (pageIndex === 4) {
+    return <FifthPage />;
   }
 };
 

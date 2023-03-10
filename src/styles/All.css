@@ -139,11 +139,6 @@ body {
     width: 50%;
   }
 }
-.progress-numbers {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-}
 
 .progress-numbers small {
   padding: 5px 12px;
@@ -187,11 +182,6 @@ body {
   color: var(--marine-blue);
   padding: 10px 0;
   font-size: 1.8em;
-}
-
-.form > p {
-  font-weight: 500;
-  color: var(--cool-gray);
 }
 
 .form button {
