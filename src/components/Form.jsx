@@ -22,10 +22,10 @@ const Form = () => {
           onClick={() => {
             goBack();
           }}
-          className={`m-0 text-cool-gray cursor-pointer ${
-            // pageIndex == 0 ? "visually-hidden" : "visible"
-            'k'
-          }`}
+          className={`m-0 text-cool-gray cursor-pointer back-btn`}
+          style={{
+            visibility: pageIndex == 0 ? "hidden" : "visible",
+          }}
         >
           Go Back
         </p>

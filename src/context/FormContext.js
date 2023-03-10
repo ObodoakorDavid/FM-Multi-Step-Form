@@ -96,8 +96,8 @@ export const FormProvider = ({ children }) => {
       },
       {
         id: 3,
-        heading: "Pro",
-        paragraph: "$15/mo",
+        heading: "Customizable Profile",
+        paragraph: "Custom theme on your profile",
         active: false,
         plan: "monthly",
         monthlyPrice: 2,
@@ -107,8 +107,23 @@ export const FormProvider = ({ children }) => {
     fourthPage: {
       choosenPlan: {},
       addOns: [],
+      totalPrice: function (monthly) {
+        if (monthly == true) {
+          let total = this.addOns.reduce((total, curValue) => {
+            return total + curValue.monthlyPrice;
+          }, 0);
+          return total + this.choosenPlan.monthlyPrice;
+        } else {
+          let total = this.addOns.reduce((total, curValue) => {
+            return total + curValue.yearlyPrice;
+          }, 0);
+          return total + this.choosenPlan.yearlyPrice;
+        }
+      },
     },
   });
+
+  // console.log(state.fourthPage.totalPrice);
 
   // ============== FristPage ==========
 

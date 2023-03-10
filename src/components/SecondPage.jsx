@@ -9,11 +9,11 @@ const SecondPage = () => {
 
   return (
     <div className="second-page">
-      <div className="top-section d-flex flex-column gap-3 text-center">
+      <div className="top-section d-flex flex-column flex-md-row gap-3 text-center align-items-md-start w-100">
         {state.secondPage.map((datum) => {
           return (
             <div
-              className={`d-flex gap-3 align-items-center p-3 p-md-2 text-start border-gray  ${
+              className={`d-flex gap-3 flex-grow-1 flex-md-column gap-md-5 align-items-center align-items-md-start p-3 p-md-3 text-start border-gray  ${
                 datum.active === true ? " active" : ""
               }`}
               onClick={() => {
@@ -42,7 +42,9 @@ const SecondPage = () => {
         })}
       </div>
       <div className="bottom-section mt-4 mt-sm-3 rounded d-flex justify-content-center gap-3 gap-sm-4 p-3 align-items-center bg-magnolia">
-        <p className="m-0 fw-bold">Monthly</p>
+        <p className={`m-0 fw-bold ${monthly ? "" : "text-cool-gray"}`}>
+          Monthly
+        </p>
         <div
           className={`slider rounded-5 ${monthly ? "" : "active"}`}
           onClick={() => {
@@ -50,10 +52,14 @@ const SecondPage = () => {
             console.log(monthly);
             handleMonthly(monthly);
           }}
+        ></div>
+        <p
+          className={`m-0 fw-bold  ${
+            !monthly ? "" : "text-cool-gray"
+          }`}
         >
-          <span></span>
-        </div>
-        <p className="m-0 fw-bold">Yearly</p>
+          Yearly
+        </p>
       </div>
     </div>
   );

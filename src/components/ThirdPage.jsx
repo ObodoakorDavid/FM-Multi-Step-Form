@@ -27,9 +27,9 @@ const ThirdPage = () => {
             />
             <div className=" flex-grow-1">
               <h4 className="m-0 fw-bold fs-5">{datum.heading}</h4>
-              <p className="m-0 fw-semibold">{datum.paragraph}</p>
+              <p className="m-0 fw-semibold text-cool-gray">{datum.paragraph}</p>
             </div>
-            <p className=" fw-semibold">
+            <p className=" fw-semibold text-marine-blue">
               {monthly
                 ? `$${datum.monthlyPrice}/mo`
                 : `$${datum.yearlyPrice}/mo`}
